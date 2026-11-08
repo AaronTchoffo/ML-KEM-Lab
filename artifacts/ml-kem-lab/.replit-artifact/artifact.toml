@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ML-KEM Lab"
+description = "Laboratoire pédagogique en français pour explorer les opérations ML-KEM réelles dans le navigateur, suivre Alice, Bob et Oscar, puis illustrer le chiffrement AES-GCM."
+version = "1.0.0"
+id = "artifacts/ml-kem-lab"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19428
+
+[services.development]
+run = "pnpm --filter @workspace/ml-kem-lab run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ml-kem-lab", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/ml-kem-lab/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19428"
+BASE_PATH = "/"
