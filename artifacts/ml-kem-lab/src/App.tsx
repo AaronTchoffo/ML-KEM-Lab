@@ -103,7 +103,7 @@ function Transfer({ from, to, description, packet }: { from: string; to: string;
   const forward = from === 'Alice';
   return <div className="card transfer">
     <div className="stage-name">Transfert intercepté</div>
-    <div className="transfer-people"><Character name="Alice" /><div className="transfer-mid"><Character name="Oscar" dashed /><div className={`packet-motion ${forward ? '' : 'reverse'}`} aria-label={`Paquet transmis de ${from} vers ${to}`}><svg width="30" height="24" viewBox="0 0 30 24" aria-hidden="true"><rect x="2" y="3" width="26" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6"/><path d="m3 5 12 9L27 5" fill="none" stroke="currentColor" strokeWidth="1.6"/></svg><span>{packet}</span></div><div className="transfer-arrow" aria-hidden="true">{forward ? '→' : '←'}</div></div><Character name="Bob" /></div>
+    <div className="transfer-people"><Character name="Alice" /><div className="transfer-mid"><Character name="Oscar" dashed /><div className={`packet-motion ${forward ? '' : 'reverse'}`} aria-label={`Paquet transmis de ${from} vers ${to}`}><svg width="30" height="24" viewBox="0 0 30 24" aria-hidden="true"><rect x="2" y="3" width="26" height="18" rx="2" fill="none" stroke="currentColor" strokeWidth="1.6"/><path d="m3 5 12 9L27 5" fill="none" stroke="currentColor" strokeWidth="1.6"/></svg><span>{packet}</span></div></div><Character name="Bob" /></div>
     <p className="transfer-copy">{description}</p>
   </div>;
 }
