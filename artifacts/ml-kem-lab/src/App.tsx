@@ -20,10 +20,14 @@ const safeError = 'Une vérification interne a échoué, relancez la simulation'
 
 function Character({ name, dashed = false }: { name: string; dashed?: boolean }) {
   const [failed, setFailed] = useState(false);
-  const key = name.toLowerCase();
+  const photoUrls: Record<string, string> = {
+    Alice: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Alice%20la%20fille-YqNiJb7KBtY2okt0QPEMMGTN7p7b9c.jpg',
+    Bob: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bob-DsCQV4oq49ggOmYvX0v48SeXaqFqMj.jpg',
+    Oscar: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/oscar-UEj0j6vt9sIbGUbbsBHUcRkfHcgkqZ.jpg',
+  };
   return <div className="character">
     {failed ? <div className={`initial ${dashed ? 'oscar' : ''}`}>{name[0]}</div> :
-      <img className={`portrait ${dashed ? 'oscar' : ''}`} src={`/avatars/${key}.jpg`} alt={name} onError={() => setFailed(true)} />}
+      <img className={`portrait ${dashed ? 'oscar' : ''}`} src={photoUrls[name]} alt={`Portrait de ${name}`} onError={() => setFailed(true)} />}
     <strong>{name}</strong>
   </div>;
 }
